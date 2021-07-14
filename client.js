@@ -9,11 +9,12 @@ const client = net.createConnection({ port: 5000 }, () => {
     process.stdin.on('readable', () => {
         let chunk;
         while ((chunk = process.stdin.read()) !== null) {
-            client.write(`${chunk}`)
+            client.write(`${chunk}`);
         }
+      
     });
     process.stdin.on('end', () => {
-        client.end()
+        client.end();
     });
 });
 client.on('data', (data) => {
